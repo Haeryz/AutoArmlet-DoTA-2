@@ -11,7 +11,7 @@ reader = easyocr.Reader(['en'], gpu=True)
 
 def read_coordinates():
     config = configparser.ConfigParser()
-    config.read('AutoArmlet REWORK/settings.ini')
+    config.read('AutoArmlet REWORK/settings.ini') # u can change which file to read
     coordinates = config['DEFAULT']
     x1, y1, x2, y2 = map(int, (coordinates['x1'], coordinates['y1'], coordinates['x2'], coordinates['y2']))
     return x1, y1, x2, y2
@@ -48,6 +48,7 @@ def main():
         region = {'top': y1, 'left': x1, 'width': x2-x1, 'height': y2-y1}
         screen_processing(sct, region)
 
+# here u can modify hp treeshold to activate armlet
 if __name__ == "__main__":
     min_hp = 200
     armlet_button = 'x'
